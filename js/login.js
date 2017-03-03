@@ -76,8 +76,8 @@ function register() {
         .then(function(response) {
             console.log(response);
 
-            if (response.token) {
-                sessionStorage.setItem('token', response.token);
+            if (response.api_token) {
+                sessionStorage.setItem('token', response.api_token);
                 location.href = 'profile.html';
             }
             else {
@@ -111,7 +111,7 @@ function login() {
             console.log('response ' + response);
 
             if (response.api_token) {
-                sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('token', response.api_token);
                 location.href = 'profile.html';
             }
             else {

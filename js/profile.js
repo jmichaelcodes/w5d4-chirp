@@ -56,7 +56,7 @@ function sendMessage() {
         // Front-end controls the variables names and values on the right side
         body: JSON.stringify({
             body: message,
-            // user: user,
+            // user:  user,
             token: token
         })
     })
