@@ -17,6 +17,8 @@ var actionLink = document.querySelector('#actionLink');
 actionLink.addEventListener('click', showConfirmPassword);
 actionButton.addEventListener('click', useActionButton);
 
+sessionStorage.clear();
+
 function showConfirmPassword() {
     // if (actionLink.innerText === 'Sign Up') {
     if (isLogin) {
@@ -55,10 +57,10 @@ function register() {
     console.log(`Full Name: ${fullNameValue} Username: ${userNameValue} Password: ${passwordValue} Confirm Password: ${confirmPasswordValue} AvatarURL: ${avatarValue}`);
     
     if (passwordValue === confirmPasswordValue) {
-    fetch('http://acc70ddc.ngrok.io/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+        fetch('http://597a8b1e.ngrok.io/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
         },
 
         body: JSON.stringify({
@@ -72,7 +74,7 @@ function register() {
             return response.json();
         })
         .then(function(response) {
-            // console.log(response);
+            console.log(response);
 
             if (response.token) {
                 sessionStorage.setItem('token', response.token);
@@ -91,7 +93,7 @@ function register() {
 
 function login() {
     console.log(`Username: ${userNameValue} Password: ${passwordValue}`);
-    fetch('http://acc70ddc.ngrok.io/login', {
+    fetch('http://597a8b1e.ngrok.io/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -106,11 +108,11 @@ function login() {
             return response.json();
         })
         .then(function(response) {
-            // console.log(response);
+            console.log('response ' + response);
 
-            if (response.token) {
+            if (response.api_token) {
                 sessionStorage.setItem('token', response.token);
-                location.href = 'users.html';
+                location.href = 'profile.html';
             }
             else {
                 alert('There was an error. Check out your console.');
