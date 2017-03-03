@@ -23,7 +23,7 @@ getUsers();
 function getUsers() {
     var token = sessionStorage.getItem('token');
 
-    fetch('http://597a8b1e.ngrok.io/users')
+    fetch('https://nameless-anchorage-55016.herokuapp.com/users')
     .then(function(response) {
         return response.json();
     })

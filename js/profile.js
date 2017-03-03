@@ -6,7 +6,7 @@ function getMessages() {
     var token = sessionStorage.getItem('token');
     // var userId = location.href.split('?')[1].split('=').pop();
 
-    fetch('http://597a8b1e.ngrok.io/posts')
+    fetch('https://nameless-anchorage-55016.herokuapp.com/posts')
     .then(function(response) {
         return response.json();
         console.log('json response');
@@ -44,9 +44,9 @@ function sendMessage() {
 
     console.log("message " + message);
 
-    document.querySelector('#postMessage').value = '';
+    // document.querySelector('#postMessage').value = '';
 
-    fetch('http://597a8b1e.ngrok.io/posts', {
+    fetch('https://nameless-anchorage-55016.herokuapp.com/posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ function sendMessage() {
         body: JSON.stringify({
             body: message,
             // user:  user,
-            token: token
+            api_token: token
         })
     })
         .then(function(response) {

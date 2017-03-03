@@ -57,7 +57,7 @@ function register() {
     console.log(`Full Name: ${fullNameValue} Username: ${userNameValue} Password: ${passwordValue} Confirm Password: ${confirmPasswordValue} AvatarURL: ${avatarValue}`);
     
     if (passwordValue === confirmPasswordValue) {
-        fetch('http://597a8b1e.ngrok.io/users', {
+        fetch('https://nameless-anchorage-55016.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ function register() {
 
 function login() {
     console.log(`Username: ${userNameValue} Password: ${passwordValue}`);
-    fetch('http://597a8b1e.ngrok.io/signin', {
+    fetch('https://nameless-anchorage-55016.herokuapp.com/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
