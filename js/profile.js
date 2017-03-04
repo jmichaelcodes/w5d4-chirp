@@ -3,16 +3,18 @@ document.querySelector('#postButton').addEventListener('click', sendMessage);
 getMessages();
 
 function getMessages() {
+    document.querySelector('#messageList').innerHTML = '';
     var token = sessionStorage.getItem('token');
-    // var userId = location.href.split('?')[1].split('=').pop();
 
     fetch('https://nameless-anchorage-55016.herokuapp.com/posts')
     .then(function(response) {
         return response.json();
-        console.log('json response');
+        console.log(response);
     })
     .then(function(response) {
         renderMessagesList(response);
+        document.querySelector('#postMessage').value = '';
+
     })
 }
 
@@ -61,12 +63,13 @@ function sendMessage() {
         })
     })
         .then(function(response) {
+            console.log(response.json);
             return response.json();
         })
         .then(function(response) {
             console.log(response);
 
             alert('message was posted');
-
+            getMessages();
         })
 }

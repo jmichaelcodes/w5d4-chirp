@@ -74,14 +74,21 @@ function register() {
             return response.json();
         })
         .then(function(response) {
-            console.log(response);
+            console.log(response.api_token);
 
             if (response.api_token) {
                 sessionStorage.setItem('token', response.api_token);
                 location.href = 'profile.html';
             }
             else {
-                alert('There was an error. Check out your console.');
+                // alert('There was an error. Check out your console.');
+                alert('User has been registered. Please sign in');
+                document.querySelector('#name').value = '';
+                document.querySelector('#username').value = '';
+                document.querySelector('#password').value = '';
+                document.querySelector('#confirmPassword').value = '';
+                document.querySelector('#avatar').value = '';
+                showConfirmPassword();
                 console.log(response);
             }
         })
@@ -116,7 +123,7 @@ function login() {
             }
             else {
                 alert('There was an error. Check out your console.');
-                console.log(response);
+                console.log('error response: ' + response);
             }
         })
 }
